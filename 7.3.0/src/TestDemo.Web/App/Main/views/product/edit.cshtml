@@ -1,0 +1,34 @@
+﻿<form id="frm_create_product" name="productCreateForm" novalidate>
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="vm.cancel()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">
+            <span>@("Edit ProductName")</span>
+        </h4>
+    </div>
+    <div class="modal-body">
+        <span>product Module</span>
+        <uib-tabset class="tab-container tabbable-line">
+            <uib-tab heading="product Details">
+                <div class="row clearfix" style="margin-top:10px;">
+                    <div class="col-sm-12">
+                        <div class="form-group form-float">
+                                <label for="name" class="form-label">@("name")</label>
+                            <div class="form-line">
+                                <input id="name" type="text" name="name" ng-model="vm.product.name" required maxlength="32" minlength="2" class="validate form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default waves-effect" ng-click="vm.cancel()">
+            @("Cancel")
+        </button>
+        <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.save()">
+            @("Save")
+        </button>
+    </div>
+
+</form>
