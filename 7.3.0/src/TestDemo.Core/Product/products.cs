@@ -12,5 +12,7 @@ namespace TestDemo.Product
     public class products : FullAuditedEntity
     {
         public virtual string Name { get; set; }
+        public string Title { get; set; }
+        public virtual string Attachment { get; set; }
     }
 }

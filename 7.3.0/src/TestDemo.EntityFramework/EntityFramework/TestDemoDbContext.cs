@@ -4,6 +4,7 @@ using Abp.DynamicEntityProperties;
 using Abp.Zero.EntityFramework;
 using TestDemo.Authorization.Roles;
 using TestDemo.Authorization.Users;
+using TestDemo.FileUploadByDirective;
 using TestDemo.MultiTenancy;
 using TestDemo.Product;
 using static System.Net.Mime.MediaTypeNames;
@@ -21,6 +22,8 @@ namespace TestDemo.EntityFramework
          */
 
         public virtual IDbSet<products> product { get; set; }
+        public virtual IDbSet<Productmaster> Productmasters { get; set; }
+        public virtual IDbSet<Productchild> Productchildren { get; set; }
         public TestDemoDbContext()
             : base("Default")
         {

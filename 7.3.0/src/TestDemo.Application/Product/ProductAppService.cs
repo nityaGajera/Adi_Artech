@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestDemo.FileUploadByDirective;
 using TestDemo.Product.Dto;
 
 namespace TestDemo.Product
@@ -13,10 +14,14 @@ namespace TestDemo.Product
     public class ProductAppService : TestDemoApplicationModule, IProductAppService
     {
         private readonly IRepository<products> _ProductRepository;
+        private readonly IRepository<Productmaster> _productmasterRepository;
+        private readonly IRepository<Productchild> _productchildRepository;
 
-        public ProductAppService(IRepository<products> ProductRepository)
+        public ProductAppService(IRepository<products> ProductRepository, IRepository<Productmaster> productmasterRepository, IRepository<Productchild> productchildRepository)
         {
             _ProductRepository = ProductRepository;
+            _productmasterRepository = productmasterRepository;
+            _productchildRepository = productchildRepository;
         }
         public List<ProductDto> GetProductData()
         {
@@ -32,7 +37,7 @@ namespace TestDemo.Product
         public async Task CreateProduct(CreateProductDto input)
         {
             var product = input.MapTo<products>();
-            await _ProductRepository.InsertAsync(product);
+            await _ProductRepository.InsertAndGetIdAsync(product);
         }
 
         public async Task<ProductDto> getProductbyid(EntityDto input)
@@ -56,6 +61,34 @@ namespace TestDemo.Product
         public async Task DeleteProduct(EntityDto input)
         {
             await _ProductRepository.DeleteAsync(input.Id);
+        }
+        public bool ProductExsistence(ProductDto input)
+        {
+            return _ProductRepository.GetAll().Where(e => e.Title == input.Title).Any();
+        }
+        public bool ProductExsistenceById(ProductDto input)
+        {
+            return _ProductRepository.GetAll().Where(e => e.Title == input.Title && e.Id != input.Id).Any();
+        }
+
+        public async Task<int> CreateFileUploadProduct(CreateFileUploadDto input)
+        {
+            var Products = input.MapTo<Productmaster>();
+            int Id = await _productmasterRepository.InsertAndGetIdAsync(Products);
+            return Id;
+        }
+        public async Task FileUploadProduct(FileUploadDto input)
+        {
+            if (input.FileName != null && input.FileName.Count() != 0)
+            {
+                for (int i = 0; i < input.FileName.Count(); i++)
+                {
+                    Productchild doc = new Productchild();
+                    doc.FileName = input.FileName[i];
+                    doc.ProductId = input.Id;
+                    await _productchildRepository.InsertAsync(doc);
+                }
+            }
         }
     }
 }

@@ -250,7 +250,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Product\Dto\CreateFileUploadDto.cs" />
     <Compile Include="Product\Dto\CreateProductDto.cs" />
+    <Compile Include="Product\Dto\FileUploadDto.cs" />
     <Compile Include="Product\Dto\ProductDto.cs" />
     <Compile Include="Product\IProductAppService.cs" />
     <Compile Include="Product\ProductAppService.cs" />

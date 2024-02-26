@@ -23,6 +23,26 @@
                     </div>
                 </div>
     </div>
+    <div class="row clearfix">
+        <div class="col-sm-12">
+            @*<label class="form-label"> Document Upload  </label>*@
+            <div class="form-group marginbtmnone form-float">
+                <div class="customfileupload">
+                    <input type="text" name="Logo" id="logo" class="form-control" placeholder="No file selected" readonly required>
+                    <span class="input-group-btn">
+                        <div class="btn btn-primary  custom-file-uploader">
+                            <input id="filetoupload" ng-model="vm.product.attachment" type="file" name="file" onchange="this.form.logo.value = this.files.length ? this.files[0].name : ''" />
+                            Browse
+                        </div>
+                        <a ng-if="vm.invoices.documentUpload!=null" href={{vm.datafield.uploadDocUrl}} target="_blank" class="btn btn-primary btndownloadfile"><i class="fa fa-download" aria-hidden="true"></i></a>
+                    </span>
+                </div>
+                    <span>
+                          [only pdf,doc,txt,xls,jpg file allowed.]
+                    </span>
+            </div>
+        </div>
+    </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default waves-effect" ng-click="vm.cancel()">
             @L("Cancel")
