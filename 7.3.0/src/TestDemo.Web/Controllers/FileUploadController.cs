@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Http;
 
 namespace TestDemo.Web.Controllers
 {
@@ -16,8 +17,9 @@ namespace TestDemo.Web.Controllers
         public FileUploadController()
         {
         }
-        
-        public JsonResult UploadProductAttachments(HttpPostedFileBase Files)
+
+        [HttpPost]
+        public JsonResult UploadProductAttachments()
         {
             try
             {
@@ -30,17 +32,17 @@ namespace TestDemo.Web.Controllers
                 var acceptedFormates = new List<string> { ".pdf", ".jpg", ".jpeg", ".doc", ".docx", ".txt", ".xls", ".xlxs" };
                 var fileExt = System.IO.Path.GetExtension(files.FileName).Substring(1);
                 var fileInfo = new FileInfo(files.FileName);
-                if(!acceptedFormates.Contains(fileExt.ToLower()))
+                if (!acceptedFormates.Contains(fileExt.ToLower()))
                 {
                     // throw new UserFriendlyException("DocumentsFill");
                 }
                 string tempFileName = "";
-                tempFileName = Path.GetFileNameWithoutExtension(files.FileName.ToString().Replace("", "_")) + "_" + DateTime.Now.ToString("ddMMyyHHmmssffff") + fileInfo.Extension;
-                if(!Directory.Exists(Path.Combine(Server.MapPath("~/UserFiles/Documents/"))))
+                tempFileName = Path.GetFileNameWithoutExtension(files.FileName) + fileInfo.Extension;
+                if(!Directory.Exists(Path.Combine(Server.MapPath("~/UserFiles/Products/"))))
                 {
-                    Directory.CreateDirectory(Path.Combine(Server.MapPath("~/UserFiles/Documents/")));
+                    Directory.CreateDirectory(Path.Combine(Server.MapPath("~/UserFiles/Products/")));
                 }
-                var ServerSavePath = Path.Combine(Server.MapPath("~/UserFiles/Documents/") + tempFileName);
+                var ServerSavePath = Path.Combine(Server.MapPath("~/UserFiles/Products/") + tempFileName);
                 files.SaveAs(ServerSavePath);
 
                 return Json(new AjaxResponse(new

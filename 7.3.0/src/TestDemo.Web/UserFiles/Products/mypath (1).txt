@@ -1,0 +1,522 @@
+1)Download
+2)set as startup project
+3)set connection string
+4)Package Manager Console -> select -> entiry framework-> update-database
+
+5)comment multi tenency-> ProjectnameCoreModule file(core folder:.cs file)
+//Configuration.MultiTenancy.IsEnabled = PhoneBookConsts.MultiTenancyEnabled;
+
+6)Example using Your_Table_name(LearningTypes) Table name
+folder : core
+e.g :1) Country.Cs(folder:Country)
+[Table("Country")]
+    public class country: FullAuditedEntity
+    {
+        public const int maxLength = 100;
+        [Required]
+        [MaxLength(maxLength)]
+        public virtual string Name { get; set; }
+        public virtual string ShortCode { get; set; }
+        public virtual string ShortName { get; set; }
+    }
+2)State.Cs(folder:State)
+  [Table("State")]
+    public class state: FullAuditedEntity
+    {
+        public const int maxLength = 100;
+        [Required]
+        [MaxLength(maxLength)]
+        public virtual string Name { get; set; }
+        public virtual int Country_Code { get; set; }
+        public virtual string ShortCode { get; set; }
+        public virtual string ShortName { get; set; }
+    }
+3)Test.cs(folder:Test)
+ [Table("Test")]
+    public class test: FullAuditedEntity    
+    {
+        public const int maxNameLength = 100;
+        [Required]
+        [MaxLength(maxNameLength)]
+        public virtual string TestName { get; set; }
+        public virtual string TestNumber { get; set; }
+    }
+	
+7)Add dataset
+folder : EntityFramework(ProjectnameDbcontext.cs)
+		public virtual IDbSet<test> Tests { get; set; }
+        public virtual IDbSet<country> Country { get; set; }
+        public virtual IDbSet<state> State { get; set; }
+
+8)Package Manager Console
+---------------------
+select default project -> enttiry framework
+
+add-Migration <MigrationName>
+Update-Database
+(then generate up(),down() and migration file on both application and database,generate table also)
+
+9)folder : Application (to make DTO and services)
+Services:
+--> IMyprojectAppService.cs 
+public interface ITestAppService : IApplicationService
+		{
+        List<TestDto> GetTestData();
+        List<GetCountryData> getCountryData();
+        List<GetStateData> getStateData();
+        Task CreateTest(CreateTestData input);
+        Task DeleteTest(EntityDto input);
+        bool TestExsistence(CreateTestData input);
+        bool TestExsistenceById(CreateTestData input);
+        Task UpdateTest(CreateTestData input);
+        //Task getStateByCountry(CreateTestData input);
+		//Task<PagedResultDto<TestDto>> getTestData(TestInput Input);
+		}
+--> MyprojectAppService.cs
+public class TestAppService : MyProjectApplicationModule, ITestAppService
+    {
+        private readonly IRepository<test> _TestRepository;
+        private readonly IRepository<country> _CountryRepository;
+        private readonly IRepository<state> _StateRepository;
+
+        public TestAppService (IRepository<test> TestRepository,
+            IRepository<country> countryRepository,
+            IRepository<state> stateRepository)
+        {
+            _TestRepository = TestRepository;
+            _CountryRepository = countryRepository;
+            _StateRepository = stateRepository;
+         }
+        public List<TestDto> GetTestData()
+        {
+            var Tests = (from a in _TestRepository.GetAll()
+                         select new TestDto
+                         {
+                             Id = a.Id,
+                             TestName = a.TestName,
+                             TestNumber = a.TestNumber,
+                         }).ToList();
+
+            return Tests;
+        }
+
+        public List<GetCountryData> getCountryData()
+        {
+            var Countries = (from a in _CountryRepository.GetAll()
+                         select new GetCountryData
+                         {
+                             Name = a.Name,
+                             ShortCode = a.ShortCode,
+                             ShortName = a.ShortName
+                         }).ToList();
+
+            return Countries;
+        }
+
+        public List<GetStateData> getStateData()
+        {
+            var States = (from a in _StateRepository.GetAll()
+                         select new GetStateData
+                         {
+                             Name = a.Name,
+                             Country_Code = a.Country_Code,
+                             ShortCode = a.ShortCode,
+                             ShortName = a.ShortName
+                         }).ToList();
+
+            return States;
+        }
+
+        public async Task CreateTest(CreateTestData input)
+        {
+            var Tests = input.MapTo<test>();
+            await _TestRepository.InsertAsync(Tests);
+        }
+
+        public async Task DeleteTest(EntityDto input)
+        {
+            await _TestRepository.DeleteAsync(input.Id);
+        }
+
+        public bool TestExsistence(CreateTestData input)
+        {
+            return _TestRepository.GetAll().Where(e => e.TestName == input.TestName).Any();
+        }
+
+        public bool TestExsistenceById(CreateTestData input)
+        {
+            return _TestRepository.GetAll().Where(e => e.TestName == input.TestName && e.Id != input.Id).Any();
+        }
+
+        public async Task UpdateTest(CreateTestData input)
+        {
+            var Tests = await _TestRepository.GetAsync(input.Id);
+            Tests.TestName = input.TestName;
+            Tests.TestNumber = input.TestNumber;
+            await _TestRepository.UpdateAsync(Tests);
+        }
+    }
+Dto : 
+1)GetCountryData.cs(folder:Country/Dto)
+   [AutoMapFrom(typeof(country))]
+    public class GetCountryData: EntityDto
+    {
+        public virtual string Name { get; set; }
+        public virtual string ShortCode { get; set; }
+        public virtual string ShortName { get; set; }
+    }
+2)GetStateData.cs(folder:State/Dto)
+ [AutoMapFrom(typeof(state))]
+    public class GetStateData: EntityDto
+    {
+        public virtual string Name { get; set; }
+        public virtual int Country_Code { get; set; }
+        public virtual string ShortCode { get; set; }
+        public virtual string ShortName { get; set; }
+    }
+3)folder:Test/DTO
+-->CreateTestData.cs
+[AutoMapTo(typeof(test))]
+    public class CreateTestData: EntityDto
+    {
+        public const int maxNameLength = 100;
+        [Required]
+        [MaxLength(maxNameLength)]
+        public virtual string TestName { get; set; }
+        public virtual string TestNumber { get; set; }
+
+    }
+-->GetTestData.cs
+[AutoMapFrom(typeof(test))]
+    public class GetTestData: EntityDto
+    {
+        public virtual string TestName { get; set; }
+        public virtual string TestNumber { get; set; }
+    }
+-->TestDto.cs
+[AutoMapFrom(typeof(test))]
+    public class TestDto : EntityDto<long>
+    {
+        public const int maxNameLength = 100;
+        [Required]
+        [MaxLength(maxNameLength)]
+        public virtual string TestName { get; set; }
+        public virtual string TestNumber { get; set; }
+    }
+-->TestInput.cs(for Pagination)
+  public class TestInput : PagedAndSortedResultRequestDto
+    {
+        public virtual string TestName { get; set; }
+        public virtual string TestNumber { get; set; }
+    }
+	
+10)Create Script(.js) and View(.cshtml) file :
+folder : web(App/Main/views/test --camelCase folder) 
+--> test.js:
+(function () {
+    angular.module('app').controller('app.view.test',
+        ['$scope', 'abp.services.app.test',
+            function ($scope, testService) {
+                var vm = this;
+                angular.element(document.getElementById('vm.update'))[0].disabled = true;
+                angular.element(document.getElementById('vm.save'))[0].disabled = false;
+                $("#vm.mainModal").show();
+
+                vm.tests = [];
+
+                function getTest() {
+                    testService.getTestData({}).then(function (result) {
+                        vm.tests = result.data;
+                    });
+                }
+
+                function getCountry() {
+                    testService.getCountryData()
+                        .then(function (result) {
+                            vm.countryList = result.data;
+                        });
+                }
+                function getState() {
+                    testService.getStateData()
+                        .then(function (result) {
+                            vm.stateList = result.data;
+                        });
+                }
+
+                vm.onCountryChange = function () {
+                    testService.getStateByCountry(vm.tests.countryCode).then(function (result) {
+                        vm.stateList = result.data;
+                    });
+                };
+
+                vm.save = function () {
+                    var dataobj = {
+                        testName: vm.tests.testName,
+                        testNumber: vm.tests.testNumber
+                    };
+                    //alert(JSON.stringify(dataobj));
+                    testService.testExsistence(dataobj).then(function (result) {
+                        if (!result.data) {
+                            testService.createTest(dataobj).then(function () {
+                                abp.notify.info(App.localize('SavedSuccessfully'));
+                                //$uibModalInstance.close();
+                                cleraFields();
+                                getTest();
+                            });
+                        }
+                        else {
+                            abp.notify.error(App.localize('Test is already Exist'));
+                        }
+                    });
+                };
+
+
+// To bind Data (ids)
+function getItemsData() {
+
+    itemService.bindCategoryIds()
+        .then(function (result) {
+            vm.categoryItems = result.data;
+
+        });
+}
+
+                vm.update = function () {
+                    var dataobj = {
+                        testName: vm.tests.testName,
+                        testNumber: vm.tests.testNumber,
+                        id: vm.tests.id
+                    };
+                    testService.testExsistenceById(dataobj).then(function (result) {
+                        if (!result.data) {
+                            testService.updateTest(dataobj).then(function () {
+                                abp.notify.info(App.localize('UpdatedSuccessfully'));
+                                //$uibModalInstance.close();
+                                cleraFields();
+                                getTest();
+                            });
+                        } else {
+                            abp.notify.error(App.localize('Test Name Already Exist.'));
+                        }
+
+                    });
+                };
+
+                vm.editdata = function (items) {
+                    //alert(JSON.stringify(items));
+                    vm.tests.testName = items.testName;
+                    vm.tests.testNumber = items.testNumber;
+                    vm.tests.id = items.id;
+                    angular.element(document.getElementById('vm.update'))[0].disabled = false;
+                    angular.element(document.getElementById('vm.save'))[0].disabled = true;
+                };
+
+                vm.deletedata = function (item) {
+
+                    abp.message.confirm(
+                        "Delete Test '" + item.testName + "'?",
+                        "Delete?",
+                        function (result) {
+                            if (result) {
+
+                                testService.deleteTest({ id: item.id })
+                                    .then(function () {
+                                        abp.notify.info("Deleted Test is: " + item.testName);
+                                        getTest();
+                                    });
+                            }
+                        });
+                };
+
+                vm.clearform = function () {
+                    cleraFields();
+                };
+
+                cleraFields = function () {
+                    vm.tests.testName = "";
+                    vm.tests.testNumber = "";
+                    angular.element(document.getElementById('vm.update'))[0].disabled = true;
+                    angular.element(document.getElementById('vm.save'))[0].disabled = false;
+                };
+
+                vm.cancel = function () {
+                    //$uibModalInstance.dismiss();
+                    $("#vm.mainModal").hide();
+                };
+
+                getTest();
+                getCountry();
+                getState();
+
+
+            }]);
+})();
+
+--> test.cshtml
+<div ng-controller="app.view.test as vm">
+    <div class="block-header">
+        <h2>Test</h2>
+    </div>
+
+    <div>
+        <form id="vm.mainModal">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="vm.cancel()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>Create New Tests</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="testname" class="form-label">Test Name</label>
+                                    <input id="testname" type="text" name="testname" ng-model="vm.tests.testName" required maxlength="100" minlength="2" class="validate form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="testnumber" class="form-label">Test Number</label>
+                                    <input id="testnumber" type="text" name="testnumber" ng-model="vm.tests.testNumber" required maxlength="100" minlength="2" class="validate form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="country" class="form-label">Select Country</label>
+                                    <select class="form-control js-example-basic-multiple" data-placeholder="Select State" ui-select2 ng-model="vm.tests.countryCode"
+                                            ng-change="vm.onCountryChange()" required>
+                                        <option value="">Select Country</option>
+                                        <option ng-repeat="item in  vm.countryList" value="{{item.id}}">
+                                            {{item.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="state" class="form-label">Select State</label>
+                                    <select class="form-control" data-placeholder="Select State" ui-select2 ng-model="vm.tests.stateCode" required>
+                                        <option value="">Select State</option>
+                                        <option ng-repeat="item in  vm.stateList" value="{{item.id}}">
+                                            {{item.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-click="vm.save()" id="vm.save">
+                        <span aria-hidden="true">Save</span>
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="vm.update()" id="vm.update">
+                        <span aria-hidden="true">Update</span>
+                    </button>
+                    <button type="button" class="btn dtp-btn-clear" ng-click="vm.clearform()">
+                        <span aria-hidden="true">Clear</span>
+                    </button>
+                </div>
+        </form>
+    </div>
+
+    <div class="body table-responsive" ng-if="vm.tests.length > 0">
+        <table class="table table-responsive table-striped">
+            <thead>
+                <tr>
+                    <th>@L("Id")</th>
+                    <th>@L("TestNumber")</th>
+                    <th>@L("TestName")</th>
+                    <th>@L("Actions")</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="items in vm.tests">
+                    <td>{{items.id}}</td>
+                    <td>{{items.testName}}</td>
+                    <td>{{items.testNumber}}</td>
+                    <td>
+                        <button type="button" class="glyphicon glyphicon-edit" ng-click="vm.editdata(items)"></button>
+                        <button type="button" class="glyphicon glyphicon-arrow-down" ng-click="vm.deletedata(items)"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+11) setting menu and page routing
+page routing : (folder : web)(App\Main\app.js)
+.state('learningtypes', {
+                    url: '/learningtypes',
+                    templateUrl: '/App/Main/views/learningtypes/index.cshtml',
+                    menu: 'learningtypes' //Matches to name of 'About' menu in WhysApplicationNavigationProvider
+                })
+e.g : 
+.state('test', {
+                    url: '/test',
+                    templateUrl: '/App/Main/views/test/test.cshtml',
+                    menu: 'Test'
+                });
+				
+Menu : (folder : web)(App\Main\views\layout\sidebar-nav.js)
+createMenuItem("Learning Type", "", "", "learningtypes"),
+e.g : 
+createMenuItem(App.localize("Test"), "", "info", "test"),
+
+12) Localization : (folder : core)(localization/source)
+<text name="learningtype">Learning Type</text>
+e.g :
+ <text name="SuccessfullyRegistered">Successfully registered</text>
+
+
+
+
+
+
+
+
+-------------------------Reference Materials---------------------------
+
+Bind Data - 
+
+    public List<BindCategoryIdDto> BindCategoryIds()
+    {
+        var CatIds = (from c in _CategoryRepository.GetAll()
+                     select new BindCategoryIdDto
+                     {
+                        Id = c.Id,
+                        Name = c.Name,
+                     }).ToList();
+        return CatIds;
+    }
+
+and use their function in JS file - 
+
+ function getItemsData() {
+
+     itemService.bindCategoryIds()
+         .then(function (result) {
+             vm.categoryItems = result.data;
+             debugger;
+
+         });
+ }
+and call it ("getItemsData()") in the "init()" funtion
+
+
+-------------Premissions -----------------
+
+1) Create variable in Core(Folder) -> Authorization (Folder) -> PermissionNames (File).
+
+2) Create variable for Initial and Child Permission in Core(Folder) -> Authorization (Folder) -> PROJECTNAME-Authorization Provider.
+
+3) Add the permission value (Variable from step 1) and copy it using a reference in the Application service you want the permission to be in.
+
+4) Add the permission to the buttons where it is needed.		
