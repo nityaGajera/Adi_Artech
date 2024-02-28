@@ -14,14 +14,33 @@
                     $uibModalInstance.close();
 
                 }).finally(function () {
+                    debugger;
                     vm.saving = false;
                 });
             };
+            vm.getAll = function () {
+                vm.loading = true;
+                // debugger;
+                productService.GetProductData($.extend({}, vm.requestParams)).then(function (result) {
+                    //  debugger;
+                    vm.product = result.data.items;
+                    vm.userGridOptions.totalItems = result.data.totalCount;
+                    vm.userGridOptions.data = result.data.items;
+                    if (result.data.totalCount == 0) {
+                        //vm.norecord = true;
+                        abp.notify.info(app.localize('NoRecordFound'));
+                    }
+                    else { vm.norecord = false; }
+                }).finally(function () {
+                    vm.loading = false;
+                });
+
+            }
             vm.uploadFile = function (file) {
 
                 vm.saving = true;
                 var files = $('#filetoupload')[0].files[0];
-                //console.log(files);
+                /*//console.log(files);*/
                 if ($('#filetoupload')[0].files.length == 0) {
 
                     abp.notify.error(App.localize('pleaseuploaddoc'));
@@ -29,7 +48,8 @@
                     return;
                 }
 
-                var uploadUrl = "../FileUpload/UploadDocumentAttachments";
+                var uploadUrl = "../FileUpload/UploadProductAttachments";
+                debugger;
                 var fd = new FormData();
                 fd.append('file', $('#filetoupload')[0].files[0]);
 
@@ -59,11 +79,9 @@
 
             };
             vm.saveAs = function () {
+                debugger;
                 vm.loading = true;
                 vm.saving = true;
-
-                productService.ProductExsistence(vm.product).then(function (result) {
-                    if (!result.data) {
                         productService.createProduct(vm.product).then(function (result) {
                             vm.product = result.data;
                             abp.notify.success(App.localize('ProductSavedSuccessfully'));
@@ -74,14 +92,9 @@
                         }).finally(function () {
                             vm.saving = false;
                         });
-                    }
-                    else {
-                        abp.notify.error(App.localize('Product already Exist '));
-                        vm.loading = false;
-                    }
-                });
             };
             vm.save = function () {
+                debugger;
                 vm.loading = true;
                 var files = $('#filetoupload')[0].files[0];
 

@@ -7,7 +7,6 @@ using TestDemo.Authorization.Users;
 using TestDemo.FileUploadByDirective;
 using TestDemo.MultiTenancy;
 using TestDemo.Product;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace TestDemo.EntityFramework
 {
