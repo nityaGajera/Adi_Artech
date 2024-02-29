@@ -13,6 +13,6 @@ namespace TestDemo.Product.Dto
     public class FileUploadDto : EntityDto
     {
         public virtual int ProductId { get; set; }
-        public virtual List<string> FileName { get; set; }
+        public virtual List<string> Attachment { get; set; }
     }
 }

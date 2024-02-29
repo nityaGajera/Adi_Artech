@@ -12,6 +12,6 @@ namespace TestDemo.FileUploadByDirective
     public class Productchild : FullAuditedEntity
     {
         public virtual int ProductId { get; set; }
-        public virtual string FileName { get; set; }
+        public virtual string Attachment { get; set; }
     }
 }

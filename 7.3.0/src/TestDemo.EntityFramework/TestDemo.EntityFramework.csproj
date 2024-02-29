@@ -271,6 +271,14 @@
     <Compile Include="Migrations\202402270431230_product.designer.cs">
       <DependentUpon>202402270431230_product.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202402290647118_ChildProduct.cs" />
+    <Compile Include="Migrations\202402290647118_ChildProduct.designer.cs">
+      <DependentUpon>202402290647118_ChildProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202402290915421_attachment.cs" />
+    <Compile Include="Migrations\202402290915421_attachment.designer.cs">
+      <DependentUpon>202402290915421_attachment.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestDemoDataModule.cs" />
     <Compile Include="Migrations\201809270654064_InitialMigrations.cs" />
     <Compile Include="Migrations\201809270654064_InitialMigrations.Designer.cs">
@@ -421,6 +429,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202402270431230_product.resx">
       <DependentUpon>202402270431230_product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402290647118_ChildProduct.resx">
+      <DependentUpon>202402290647118_ChildProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402290915421_attachment.resx">
+      <DependentUpon>202402290915421_attachment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -239,7 +239,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileUploadByDirective\Productchild.cs" />
-    <Compile Include="FileUploadByDirective\ProductMaster.cs" />
     <Compile Include="Product\products.cs" />
     <Compile Include="TestDemoConsts.cs" />
     <Compile Include="TestDemoCoreModule.cs" />

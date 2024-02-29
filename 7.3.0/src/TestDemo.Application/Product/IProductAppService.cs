@@ -16,7 +16,7 @@ namespace TestDemo.Product
         Task<ProductDto> getProductbyid(EntityDto input);
         Task UpdateProduct(CreateProductDto input);
         Task DeleteProduct(EntityDto input);
-        Task<int> CreateFileUploadProduct(CreateFileUploadDto input);
+        //Task<int> CreateFileUploadProduct(CreateFileUploadDto input);
         Task FileUploadProduct(FileUploadDto input);
         bool ProductExsistenceById(ProductDto input);
         bool ProductExsistence(ProductDto input);

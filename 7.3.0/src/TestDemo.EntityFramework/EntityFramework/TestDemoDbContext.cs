@@ -21,7 +21,7 @@ namespace TestDemo.EntityFramework
          */
 
         public virtual IDbSet<products> product { get; set; }
-        public virtual IDbSet<Productmaster> Productmasters { get; set; }
+        //public virtual IDbSet<Productmaster> Productmasters { get; set; }
         public virtual IDbSet<Productchild> Productchildren { get; set; }
         public TestDemoDbContext()
             : base("Default")

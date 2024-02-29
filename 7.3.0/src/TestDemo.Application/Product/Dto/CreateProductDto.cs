@@ -12,6 +12,8 @@ namespace TestDemo.Product.Dto
     public class CreateProductDto : EntityDto
     {
       public virtual string Name { get; set; }
+        public virtual string Title { get; set; }
+        public virtual string Attachment { get; set; }
 
     }
 }

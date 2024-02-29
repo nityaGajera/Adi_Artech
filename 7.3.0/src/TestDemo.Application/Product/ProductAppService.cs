@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using TestDemo.FileUploadByDirective;
 using TestDemo.Product.Dto;
 
@@ -14,13 +15,13 @@ namespace TestDemo.Product
     public class ProductAppService : TestDemoApplicationModule, IProductAppService
     {
         private readonly IRepository<products> _ProductRepository;
-        private readonly IRepository<Productmaster> _productmasterRepository;
+        //private readonly IRepository<Productmaster> _productmasterRepository;
         private readonly IRepository<Productchild> _productchildRepository;
 
-        public ProductAppService(IRepository<products> ProductRepository, IRepository<Productmaster> productmasterRepository, IRepository<Productchild> productchildRepository)
+        public ProductAppService(IRepository<products> ProductRepository, /*IRepository<Productmaster> productmasterRepository*/ IRepository<Productchild> productchildRepository)
         {
             _ProductRepository = ProductRepository;
-            _productmasterRepository = productmasterRepository;
+            //_productmasterRepository = productmasterRepository;
             _productchildRepository = productchildRepository;
         }
         public List<ProductDto> GetProductData()
@@ -30,6 +31,7 @@ namespace TestDemo.Product
                         {
                             Id = a.Id,
                             Name = a.Name,
+                            Attachment = a.Attachment,
                         }).ToList();
             return product;
         }
@@ -49,6 +51,7 @@ namespace TestDemo.Product
                          {
                              Id = a.Id,
                              Name = a.Name,
+                             Attachment = a.Attachment,
                          }).FirstOrDefault();
             return Products;
         }
@@ -56,6 +59,7 @@ namespace TestDemo.Product
         {
             var Products = await _ProductRepository.GetAsync(input.Id);
             Products.Name = input.Name;
+            Products.Attachment = input.Attachment;
             await _ProductRepository.UpdateAsync(Products);
         }
         public async Task DeleteProduct(EntityDto input)
@@ -64,27 +68,27 @@ namespace TestDemo.Product
         }
         public bool ProductExsistence(ProductDto input)
         {
-            return _ProductRepository.GetAll().Where(e => e.Title == input.Title).Any();
+            return _ProductRepository.GetAll().Where(e => e.Attachment == input.Attachment).Any();
         }
         public bool ProductExsistenceById(ProductDto input)
         {
-            return _ProductRepository.GetAll().Where(e => e.Title == input.Title && e.Id != input.Id).Any();
+            return _ProductRepository.GetAll().Where(e => e.Attachment == input.Attachment && e.Id != input.Id).Any();
         }
 
-        public async Task<int> CreateFileUploadProduct(CreateFileUploadDto input)
-        {
-            var Products = input.MapTo<Productmaster>();
-            int Id = await _productmasterRepository.InsertAndGetIdAsync(Products);
-            return Id;
-        }
+        //public async Task<int> CreateFileUploadProduct(CreateFileUploadDto input)
+        //{
+        //    var Products = input.MapTo<Productmaster>();
+        //    int Id = await _productmasterRepository.InsertAndGetIdAsync(Products);
+        //    return Id;
+        //}
         public async Task FileUploadProduct(FileUploadDto input)
         {
-            if (input.FileName != null && input.FileName.Count() != 0)
+            if (input.Attachment != null && input.Attachment.Count() != 0)
             {
-                for (int i = 0; i < input.FileName.Count(); i++)
+                for (int i = 0; i < input.Attachment.Count(); i++)
                 {
                     Productchild doc = new Productchild();
-                    doc.FileName = input.FileName[i];
+                    doc.Attachment = input.Attachment[i];
                     doc.ProductId = input.Id;
                     await _productchildRepository.InsertAsync(doc);
                 }
