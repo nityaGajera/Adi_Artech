@@ -12,10 +12,20 @@
                 if (id == undefined) {
 
                 } else {
-                    getProductbyid();
+                    productExsistenceById();
                 }
             }
             init();
+
+            function productExsistenceById() {
+                productService.productExsistenceById({
+                    id: id
+                }).then(function (result) {
+                    debugger;
+                    vm.product = result.data;
+                    console.log(vm.product);
+                });
+            }
             vm.uploadFile = function (file) {
                 vm.saving = true;
                 if ($('#filetoupload')[0].files.length != 0) {
@@ -57,8 +67,6 @@
 
 
             };
-
-
 
             function init() {
 
