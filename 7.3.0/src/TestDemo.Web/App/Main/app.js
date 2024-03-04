@@ -56,6 +56,7 @@
                     templateUrl: '/App/Main/views/home/home.cshtml',
                     menu: 'Home' //Matches to name of 'Home' menu in TestDemoNavigationProvider
                 })
+
                 .state('about', {
                     url: '/about',
                     templateUrl: '/App/Main/views/about/about.cshtml',
@@ -65,7 +66,13 @@
                     url: '/product',
                     templateUrl: '/App/Main/views/product/index.cshtml',
                     menu: 'product' //Matches to name of 'product' menu in TestDemoNavigationProvider
-                });
+                })
+
+        //         .state('home', {
+        //           url: '/',
+        //           templateUrl: '/App/Main/views/front-end/index.cshtml',
+        //           menu: 'Home' //Matches to name of 'Home' menu in TestDemoNavigationProvider
+        //        });
         }
     ]);
 
