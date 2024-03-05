@@ -14,7 +14,7 @@
                 createMenuItem(App.localize("About"), "", "info", "about"),
 
                 createMenuItem(App.localize("Product Catagory"), "", "menu", "", [
-                    createMenuItem("Product", "", "info", "product"),
+                    createMenuItem("Product", "Pages.Product", "info", "product"),
                     ]),
 
                 createMenuItem(App.localize("MultiLevelMenu"), "", "menu", "", [

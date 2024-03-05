@@ -1,14 +1,20 @@
 ﻿using Abp.Application.Services.Dto;
+using Abp.Authorization.Users;
 using Abp.AutoMapper;
+using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
+using Abp.Runtime.Session;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using TestDemo.Authorization.Roles;
 using TestDemo.FileUploadByDirective;
 using TestDemo.Product.Dto;
+using static System.Collections.Specialized.BitVector32;
 
 namespace TestDemo.Product
 {
@@ -17,17 +23,35 @@ namespace TestDemo.Product
         private readonly IRepository<products> _ProductRepository;
         //private readonly IRepository<Productmaster> _productmasterRepository;
         private readonly IRepository<Productchild> _productchildRepository;
+        private readonly IAbpSession _session;
+        private readonly IRepository<Role> _roleRepository;
+        private readonly IRepository<UserRole, long> _userRoleRepository;
 
-        public ProductAppService(IRepository<products> ProductRepository, /*IRepository<Productmaster> productmasterRepository*/ IRepository<Productchild> productchildRepository)
+
+        public ProductAppService(IRepository<products> ProductRepository, /*IRepository<Productmaster> productmasterRepository*/ IRepository<Productchild> productchildRepository, IAbpSession session, IRepository<Role> roleRepository, IRepository<UserRole, long> userRoleRepository)
         {
             _ProductRepository = ProductRepository;
             //_productmasterRepository = productmasterRepository;
             _productchildRepository = productchildRepository;
+            _session = session;
+            _roleRepository = roleRepository;
+            _userRoleRepository = userRoleRepository;
         }
         public List<ProductDto> GetProductData()
         {
-            var product = (from a in _ProductRepository.GetAll()
-                        select new ProductDto
+            int curId = (int)_session.UserId;
+
+            var getRole = (from ur in _userRoleRepository.GetAll().Where(x => x.UserId == curId)
+                           join r in _roleRepository.GetAll()
+                           on ur.RoleId equals r.Id
+                           select new
+                           {
+                               RoleName = r.Name,
+                           }).FirstOrDefault();
+
+
+            var product = (from a in _ProductRepository.GetAll().WhereIf(getRole.RoleName == "Employee", x => x.CreatorUserId == curId)
+                           select new ProductDto
                         {
                             Id = a.Id,
                             Name = a.Name,

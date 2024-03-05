@@ -10,6 +10,11 @@ namespace TestDemo.Authorization
         {
             context.CreatePermission(PermissionNames.Pages_Users, L("Users"));
             context.CreatePermission(PermissionNames.Pages_Roles, L("Roles"));
+           
+            var product = context.CreatePermission(PermissionNames.Pages_Product, L("Product"));
+            product.CreateChildPermission(PermissionNames.Pages_Product_Create, L("Create_Product"));
+
+
             context.CreatePermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
         }
 
