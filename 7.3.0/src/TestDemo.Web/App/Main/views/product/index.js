@@ -10,6 +10,34 @@
                         vm.product = result.data;
                     });
             }
+            vm.permissions = {
+                productcreate: abp.auth.hasPermission('Pages.Product.Create'),
+                productupdate: abp.auth.hasPermission('Pages.Product.Update'),
+                productdelete: abp.auth.hasPermission('Pages.Product.Delete'),
+            }
+
+            vm.productcreatepermission = function () {
+                if (vm.permissions.productcreate) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            vm.productupdatepermission = function () {
+                if (vm.permissions.productupdate) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            vm.productdeletepermission = function () {
+                if (vm.permissions.productdelete) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
 
             vm.openproductcreate = function () {
                 var modalInstance = $uibModal.open({

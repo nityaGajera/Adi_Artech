@@ -13,6 +13,8 @@ namespace TestDemo.Authorization
            
             var product = context.CreatePermission(PermissionNames.Pages_Product, L("Product"));
             product.CreateChildPermission(PermissionNames.Pages_Product_Create, L("Create_Product"));
+            product.CreateChildPermission(PermissionNames.Pages_Product_Update, L("Update_Product"));
+            product.CreateChildPermission(PermissionNames.Pages_Product_Delete, L("Delete_Product"));
 
 
             context.CreatePermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);

@@ -78,6 +78,9 @@
     <text name="Delete">Delete</text>
 	  <text name="Product">Product</text>
 	  <text name="CreateNewProduct">CreateNewProduct</text>
+	  <text name="Create_Product">Create_Product</text>
+	  <text name="Delete_Product">Delete_Product</text>
+	  <text name="Update_Product">Update_Product</text>
 
     <text name="AreYouSure">Are you sure?</text>
   </texts>
