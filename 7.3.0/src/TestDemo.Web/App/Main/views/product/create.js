@@ -10,7 +10,7 @@
 
             vm.save = function () {
                 productService.createProduct(vm.product).then(function () {
-                    abp.notify.info(App.localize('SavedSuccessfully'));
+                    abp.notify.info(App.localize('Saved Successfully'));
                     $uibModalInstance.close();
 
                 }).finally(function () {
@@ -28,7 +28,7 @@
                     vm.userGridOptions.data = result.data.items;
                     if (result.data.totalCount == 0) {
                         //vm.norecord = true;
-                        abp.notify.info(app.localize('NoRecordFound'));
+                        abp.notify.info(app.localize('No Record Found'));
                     }
                     else { vm.norecord = false; }
                 }).finally(function () {
@@ -43,7 +43,7 @@
                 /*//console.log(files);*/
                 if ($('#filetoupload')[0].files.length == 0) {
 
-                    abp.notify.error(App.localize('pleaseuploaddoc'));
+                    abp.notify.error(App.localize('please upload doc'));
 
                     return;
                 }
@@ -67,7 +67,7 @@
 
 
                     else {
-                        alert("somethingsiswrong");
+                        alert("somethings is wrong");
                     }
 
                 }).finally(function () {
@@ -84,7 +84,7 @@
                 vm.saving = true;
                         productService.createProduct(vm.product).then(function (result) {
                             vm.product = result.data;
-                            abp.notify.success(App.localize('ProductSavedSuccessfully'));
+                            abp.notify.success(App.localize('Product Saved Successfully'));
 
                             $uibModalInstance.close();
                             vm.getAll();
@@ -110,19 +110,19 @@
                             vm.uploadFile();
                         }
                         else {
-                            abp.notify.error(App.localize('FilesizeexceedsmaximumlimitMB'));
+                            abp.notify.error(App.localize('File size exceeds maximum limit MB'));
                         }
                     }
 
                     else {
-                        abp.notify.error(App.localize('pleaseuploadcorrectfile'));
+                        abp.notify.error(App.localize('please upload correct file'));
 
                         // return;
                     }
 
                 }
                 else {
-                    abp.notify.error(App.localize('pleaseuploaddoc'));
+                    abp.notify.error(App.localize('please upload doc'));
                     //return;
                     vm.loading = false;
                 }

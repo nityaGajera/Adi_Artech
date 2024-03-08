@@ -34,6 +34,7 @@
                                     <input id="filetoupload" ng-model="vm.product.attachment" type="file" name="file" onchange="this.form.logo.value = this.files.length ? this.files[0].name : ''" />
                                     Browse
                                 </div>
+                                <img ng-src="{{ uploadedImageUrl }}" ng-show="uploadedImageUrl" />
                                 <span class="input-group-btn">
                                     @*<a ng-if="vm.invoices.productUpload!=null" href={{vm.datafield.uploadDocUrl}} target="_blank" class="btn btn-primary btndownloadfile"><i class="fa fa-download" aria-hidden="true"></i></a>*@
                                 </span>

@@ -54,7 +54,7 @@
                         //console.log(data);
                     }
 
-
+                                        
 
                     else {
                         alert("somethingsiswrong");
@@ -133,8 +133,6 @@
                     vm.uploadFile();
                 }
             }
-
-
             function init() {
                 debugger;
                 if (id == undefined) {
