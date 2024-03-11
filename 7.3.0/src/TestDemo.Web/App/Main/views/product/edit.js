@@ -57,16 +57,32 @@
                                         
 
                     else {
-                        alert("somethingsiswrong");
+                        alert("somethings iswrong");
                     }
 
                 }).finally(function () {
                     vm.saving = false;
                     vm.saveAs();
                 })
+                $scope.imagePath = 'D:/SourcetreeProjs/Adi_Artech/7.3.0/src/TestDemo.Web/UserFiles/Products/painting 2.jpeg';
 
+                $scope.saveChanges = function () {
+                    console.log("Image path saved:", $scope.imagePath);
+                    debugger;
+                };
 
             };
+            //$scope.getImage = function () {
+            //    ImageService.getImage(imageId)
+            //        .then(function (response) {
+            //            $scope.imageData = response.data; 
+            //        })
+            //        .catch(function (error) {
+            //            console.error('Error retrieving image:', error);
+            //        }); 
+            //};
+            //$scope.getImage();
+         
 
             function init() {
 
@@ -149,6 +165,8 @@
                     debugger;
                     vm.product = result.data;
                     console.log(vm.product);
+                    $scope.imagePath = 'https://lh5.googleusercontent.com/p/AF1QipNAuTbO-cI-osYN96jFyRQXB-6NN4mS1NNirW_k=w408-h271-k-no';
+                    console.log(imagePath);
                 });
             }
 

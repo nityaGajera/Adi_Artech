@@ -11,6 +11,7 @@
         <span>product Module</span>
         <uib-tabset class="tab-container tabbable-line">
             <uib-tab heading="product Details">
+                {{imagePath}}
                 <div class="row clearfix" style="margin-top:10px;">
                     <div class="col-sm-12">
                         <div class="form-group form-float">
@@ -34,10 +35,12 @@
                                     <input id="filetoupload" ng-model="vm.product.attachment" type="file" name="file" onchange="this.form.logo.value = this.files.length ? this.files[0].name : ''" />
                                     Browse
                                 </div>
-                                <img ng-src="{{ uploadedImageUrl }}" ng-show="uploadedImageUrl" />
+                                @*<img ng-src="{{ uploadedImageUrl }}" ng-show="uploadedImageUrl" />*@
                                 <span class="input-group-btn">
                                     @*<a ng-if="vm.invoices.productUpload!=null" href={{vm.datafield.uploadDocUrl}} target="_blank" class="btn btn-primary btndownloadfile"><i class="fa fa-download" aria-hidden="true"></i></a>*@
                                 </span>
+                                <img ng-src="{{imagePath}}" alt="Image" />
+                                <img src="{{imagePath}}" />
                             </div>
                             <span>
                                 [only pdf,doc,txt,xls,jpg file allowed.]
@@ -45,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-    </div>
+</div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default waves-effect" ng-click="vm.cancel()">
             @("Cancel")
