@@ -1,0 +1,42 @@
+@import "globalvar.scss";
+
+.row-offcanvas { margin: 0;
+    .btn-primary{padding: 8px 12px; font-size: 16px;font-weight: bold; outline: none !important;
+        background: $primaryColor !important;border-radius: 0; border: 0 !important;width: 100%; box-shadow: none !important; display: flex;
+        justify-content: space-between;align-items: center;}
+    .icon-bar{font-size: 28px;}
+    &.active .icon-bar::before{content: '\f106';}
+}
+.accordion li { font-size: 16px; padding: 5px 10px;
+    list-style: none;
+    .fa-minus{display: none;}
+    &.active{
+        a{  
+            color: $primaryColor; font-weight: bold;
+            .fa-plus{display: none;}
+            .fa-minus{display: inline-block;}
+        }
+    } 
+    a{ color:$blackColor;    display: flex;
+        justify-content: space-between;
+        &:hover{ color: $primaryColor;} 
+    }
+}
+@media screen and (min-width:992px) {
+    .row-offcanvasTitle{    padding: 10px;border: 1px solid #ddd;margin: 0; font-size:22px; font-weight: bold; }
+    .pageWrap{border: 1px solid #ddd; border-top:none; }
+    .accordion li { border-bottom:  1px solid #ddd;
+        &:last-child{ border:none;}
+    }
+} 
+@media screen and (max-width:991px) { 
+    .row-offcanvas {
+      .sidebar-offcanvas { border: 1px solid $primaryColor ;display: none;}
+      &.active .sidebar-offcanvas{display: block;}
+    }
+    .pageWrap{    max-height: 200px;overflow-x: auto;}
+    .accordion { padding:3px 0; 
+        li {  padding: 3px 10px;
+        }
+    }
+} 

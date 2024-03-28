@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&display=swap');
+//font-family: 'Calibri', Arial, Helvetica, sans-serif;
+$bdrRadius:50%;
+$logocolor:#000;
+$primary-color:#D51C19;
+$secondry-color: #FFC930;
+$primary-darkcolor:#DC5D03;
+$primaryColor:$primary-color;
+$fntcolorred:#eb9190;
+$white-color:#fff;
+$whiteColor:#ffffff;
+$black-color:#000;
+$darkGray:#5A5A5A; 
+$darkblue: #042355;
+$primaryhover:$darkblue;
+$secondryhover:$darkblue;
+$textColor:#353535;
+$greenColor:#008F3A;
+$bule-color:#0E95D9;
+$whiteColor:#fff;
+$blackColor:#000;
+$lightGray:#7A7A7A;
+$black-color:#000;
+$yallow-color:#FFB900;
+$navilinkcolor:#686868;
+$bgnone:none;
+$bgcolor:#D7181F;
+$corred:$bgcolor;
+$linkcolorred:$bgcolor;
+$linkcolor:#F27D21;
+$link_color:#022660;
+/* --- bg color start --- */
+$bgColorPrimary: $primary-color;
+/* --- bg color end --- */
+/* --- text color start --- */
+$textColorPrimary: $primary-color;
+/* --- text color end --- */
+
+$fontfamily:'Calibri', Arial, Helvetica, sans-serif;
+$fonthd:$fontfamily;
+$fontfamilyRaleway:$fontfamily;
+
+$alignCenter:center;
+$alignEnd:flex-end;
+$alignStart:flex-start; 
+
+$footerbg:#000;
+$footertxtColor:#cccccc;
+$footerFontWeight:400;
+$footerPadding:40px 0 40px 0;
+$footerLinkMargin:35px;
+$footerSocialLinkMargin:10px;
+
+$footerFormSectionPadding:40px 0;
+$footerFormBtnFontSize:20px;
+$footerFormBtnFontWeight:700;
+$footerFormBtnPadding: 3px 20px;
+$footerFormBtnRadius:0px;
+
+$footlineBg:$primary-color;
+$footlineTextColor:#ffffff;
+$footlineFont:13px;
+$footlinePadding:10px 0px 8px 0px;
+
+$footerHeadingFont:20px;
+$footerHeadingMargin:0 0 20px 0;
+
+$txtUppercase:uppercase;
+$font16:16px;
+$txtCenter:center;
+
+/*Social Icons*/
+
+$fbiconColor:#3B5998;
+$fbiconHoverColor:#fff;
+$fbiconBg:$black-color;
+$fbiconHoverBg:#3B5998;
+$fbbdrColor:#3B5998;
+
+$twittericonBg:$black-color;
+$twittericonColor:#00ACEE;
+$twittericonHoverColor:#fff;
+$twittericonHoverBg:#00ACEE;
+$twitterbdrColor:#00ACEE;
+
+$linkedIniconBg:$black-color;
+$linkedIniconColor:#00ACEE;
+$linkedIniconHoverColor:#fff;
+$linkedIniconHoverBg:#00ACEE;
+$linkedInbdrColor:#00ACEE;
+ 
+$youTubeiconBg:$black-color;
+$youTubeiconColor:#C4302B;
+$youTubeiconHoverColor:#fff;
+$youTubeiconHoverBg:#C4302B;
+$youTubebdrColor:#C4302B;
+
+/*common*/
+body{ margin: 0px; padding: 0px;}
+ul,li{margin: 0px;padding: 0px;list-style: none;}
+a,.btn{ text-decoration: none !important; transition:all .3s ease-in-out; cursor: pointer; outline: none !important; box-shadow: none; }
+.img-fluid{ max-height: 100%;}
+.textCenter{text-align: $txtCenter;}

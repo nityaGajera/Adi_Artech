@@ -1,0 +1,700 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&display=swap");
+/* --- bg color start --- */
+/* --- bg color end --- */
+/* --- text color start --- */
+/* --- text color end --- */
+/*Social Icons*/
+/*common*/
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul, li {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+a, .btn {
+  text-decoration: none !important;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+  outline: none !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.img-fluid {
+  max-height: 100%;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+/* ============= Form area Strat ========== */
+.select2-drop {
+  border-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.formarea {
+  position: relative;
+  /* --------------------- Form bootstrap.min css Strat --------------------- */
+  /* --------------------- placeholder css Strat --------------------- */
+  /* ------ Placeholder css End ------ */
+  /* --------------------- Form bootstrap.min css End --------------------- */
+  /* --------------------- Browse input css Strat --------------------- */
+  /* ---- custom-file-uploader Start ---- */
+  /* ---- custom-file-uploader End ---- */
+  /* --------------------- Browse input css end --------------------- */
+  /* --------------------- checkbox and redio button css Strat --------------------- */
+  /* --------------------- checkbox and redio button css End --------------------- */
+}
+
+.formarea .form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.formarea .form-group:focus {
+  outline: none !important;
+}
+
+.formarea .select2-container.select2-container-active .select2-choice .select2-chosen {
+  color: #000;
+}
+
+.formarea .select2-container .select2-choice {
+  display: block;
+  width: 100%;
+  height: 60px;
+  padding: 6px 15px;
+  line-height: 1;
+  background-color: #FFFFFF;
+  background-image: none;
+  border: 1px solid rgba(0, 0, 0, 0.5) !important;
+  border-radius: 0px !important;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+}
+
+.formarea .select2-container .select2-choice:focus, .formarea .select2-container .select2-choice:hover {
+  outline: none !important;
+  border: solid 1px #D51C19 !important;
+  background-color: #FFFFFF !important;
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+  color: #000;
+}
+
+@media (max-width: 767px) {
+  .formarea .select2-container .select2-choice {
+    height: 50px;
+  }
+}
+
+.formarea .select2-container .select2-choice .select2-chosen {
+  margin-right: 20px;
+  color: rgba(0, 0, 0, 0.5);
+  height: 46px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.formarea .select2-container .select2-choice .select2-arrow {
+  right: 23px;
+  top: 1px;
+  width: 18px;
+}
+
+.formarea .select2-container .select2-choice .select2-arrow b {
+  background-image: url(../images/select_arrow.png);
+  background-size: 19px;
+}
+
+.formarea .select2-container .select2-choice:hover {
+  border: #000 solid 1px !important;
+}
+
+@media (max-width: 767px) {
+  .formarea .select2-container .select2-choice .select2-chosen {
+    height: 37px;
+  }
+  .formarea .select2-container .select2-choice .select2-arrow {
+    right: 15px;
+  }
+}
+
+.formarea .select2-container.select2-dropdown-open .select2-choice {
+  background: #fff !important;
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+.formarea .uploadresume {
+  position: relative;
+}
+
+.formarea .uploadresume i {
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.formarea .uploadresume .input-group-btn {
+  position: absolute;
+  right: 23px;
+  z-index: 222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.formarea .uploadresume label.error {
+  top: 100%;
+}
+
+.formarea .uploadresume .btn-file {
+  padding-right: 2px;
+  padding-bottom: 0px;
+}
+
+@media (max-width: 767px) {
+  .formarea .uploadresume .input-group-btn {
+    right: 15px;
+  }
+}
+
+.formarea .btn-file {
+  position: relative;
+  overflow: hidden;
+  padding-top: 9px;
+}
+
+.formarea .btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+
+.formarea #filemsg {
+  position: absolute;
+  right: 0px;
+  font-size: 14px;
+}
+
+.formarea .capcha_coad_area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 100%;
+}
+
+.formarea .capcha_coad_area .form-control {
+  max-width: 100%;
+  border-radius: 0px 0px 0px 0px !important;
+  position: relative;
+  z-index: 1;
+  padding-right: 175px;
+}
+
+.formarea .capcha_coad_area .pull-right {
+  margin-bottom: 0px !important;
+  border-radius: 0px 0px 0px 0px;
+  overflow: hidden;
+  margin-top: 0px;
+  margin-left: 0px;
+  background: #F67C22;
+  height: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 150px;
+  position: absolute;
+  z-index: 2;
+  right: 15px;
+}
+
+.formarea .capcha_coad_area .pull-right img {
+  margin: auto;
+}
+
+@media (max-width: 767px) {
+  .formarea .capcha_coad_area .pull-right {
+    width: 113px;
+    height: 35px;
+  }
+  .formarea .capcha_coad_area .pull-right .form-control {
+    padding-right: 120px;
+  }
+}
+
+.formarea .form-control, .formarea textarea, .formarea select, .formarea .select-wrapper .holder, .formarea .select2-container .select2-choice {
+  font-family: "Calibri", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+@media (max-width: 480px) {
+  .formarea .form-control, .formarea textarea, .formarea select, .formarea .select-wrapper .holder, .formarea .select2-container .select2-choice {
+    font-size: 15px;
+  }
+}
+
+.formarea input[type="radio"], .formarea input[type="checkbox"] {
+  margin-top: 2px;
+  margin-right: 8px;
+}
+
+.formarea .radio, .formarea .checkbox, .formarea .checkbox-inline label, .formarea .radio-inline label {
+  font-weight: normal;
+}
+
+.formarea label {
+  font-size: 1.125em;
+  margin-bottom: 7px;
+}
+
+.formarea label.error {
+  position: absolute;
+  left: 0px;
+  bottom: -25px;
+  font-size: 13px;
+  color: #ff0000;
+}
+
+.formarea .redcor {
+  color: #ff0000;
+}
+
+.formarea .form-control {
+  display: block;
+  width: 100%;
+  height: 60px;
+  padding: 6px 15px;
+  line-height: 1;
+  background-color: #FFFFFF;
+  background-image: none;
+  border: 1px solid rgba(0, 0, 0, 0.5) !important;
+  border-radius: 0px !important;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+}
+
+.formarea .form-control:focus, .formarea .form-control:hover {
+  outline: none !important;
+  border: solid 1px #D51C19 !important;
+  background-color: #FFFFFF !important;
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+  color: #000;
+}
+
+@media (max-width: 767px) {
+  .formarea .form-control {
+    height: 50px;
+  }
+}
+
+.formarea textarea {
+  resize: none;
+  height: 130px;
+  padding-top: 15px;
+  line-height: 18px !important;
+}
+
+.formarea textarea.form-control {
+  height: 130px;
+  border-radius: 0px !important;
+}
+
+.formarea textarea.form-control.hight130 {
+  height: 130px;
+}
+
+.formarea .help-block {
+  padding: 0px;
+}
+
+.formarea .form-horizontal .control-label {
+  text-align: left;
+}
+
+.formarea .btnarea {
+  margin-top: 10px;
+  display: block;
+  text-align: left;
+}
+
+.formarea .btnarea .btn {
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.formarea .btnarea.paddtop40 {
+  padding-top: 23px;
+}
+
+@media (max-width: 767px) {
+  .formarea .btnarea {
+    text-align: center;
+  }
+  .formarea .btnarea.paddtop40 {
+    padding-top: 10px;
+  }
+}
+
+.formarea .ie8 label.placeholder, .formarea .ie9 label.placeholder {
+  padding-top: 0px !important;
+}
+
+.formarea .ie8 .textareabox label.placeholder, .formarea .ie9 .textareabox label.placeholder {
+  padding-top: 6px !important;
+}
+
+.formarea input::-webkit-input-placeholder, .formarea .form-control::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.formarea input:-ms-input-placeholder, .formarea .form-control:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.formarea input::-ms-input-placeholder, .formarea .form-control::-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.formarea input::placeholder, .formarea .form-control::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.formarea input:focus::-webkit-input-placeholder, .formarea .form-control:focus::-webkit-input-placeholder {
+  color: #000 !important;
+}
+
+.formarea input:focus:-ms-input-placeholder, .formarea .form-control:focus:-ms-input-placeholder {
+  color: #000 !important;
+}
+
+.formarea input:focus::-ms-input-placeholder, .formarea .form-control:focus::-ms-input-placeholder {
+  color: #000 !important;
+}
+
+.formarea input:focus::placeholder, .formarea .form-control:focus::placeholder {
+  color: #000 !important;
+}
+
+.formarea .btn-file {
+  position: relative;
+  overflow: hidden;
+  padding-top: 0px;
+  font-weight: 300;
+}
+
+.formarea .btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+  background: #F5F5F5;
+}
+
+.formarea .btn-file input[readonly] {
+  background-color: #fff !important;
+  cursor: text !important;
+}
+
+.formarea .custom-file-uploader {
+  position: relative;
+  min-height: 53px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.formarea .custom-file-uploader input[type='file'] {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.formarea .custom-file-uploader img {
+  position: absolute;
+  right: 36px;
+}
+
+@media (max-width: 480px) {
+  .formarea .custom-file-uploader img {
+    max-height: 25px;
+  }
+}
+
+.formarea .custom-file-uploader input {
+  padding-left: 0px !important;
+}
+
+.formarea .file_upload_area .input-group {
+  width: auto;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+.formarea .file_upload_area .input-group input {
+  width: 100%;
+  border: #C9C9C9 solid 1px !important;
+  padding-left: 30px;
+}
+
+.formarea .file_upload_area .input-group-btn {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 100%;
+}
+
+.formarea .checkbox_area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.formarea .checkbox_area ul {
+  margin-right: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.formarea .checkbox_area ul:last-child {
+  margin-right: 0px;
+}
+
+.formarea .checkbox_area ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  cursor: pointer;
+  margin-right: 15px;
+  height: 40px;
+}
+
+.formarea .checkbox_area ul li:last-child {
+  padding-bottom: 0px;
+  margin-right: 0px;
+}
+
+.formarea .checkbox_area ul li .redio_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  padding-left: 30px;
+}
+
+.formarea .checkbox_area ul li .redio_box label {
+  margin: 0px;
+  padding: 0px;
+}
+
+.formarea .checkbox_area ul li .redio_box input[type=checkbox]:not(old), .formarea .checkbox_area ul li .redio_box input[type=radio]:not(old) {
+  position: absolute;
+  z-index: 2;
+  left: 0px;
+  top: 0px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.formarea .checkbox_area ul li .redio_box input[type=checkbox]:not(old) + span, .formarea .checkbox_area ul li .redio_box input[type=radio]:not(old) + span {
+  position: absolute;
+  z-index: 1;
+  left: 0px;
+  top: 0px;
+  background-size: 24px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.formarea .checkbox_area ul li .redio_box input[type=checkbox]:not(old) + span {
+  background: url("http://template.weblivelink.com/uiproject/design_images/checkbox.png") no-repeat 0 0;
+  background-size: 24px;
+}
+
+.formarea .checkbox_area ul li .redio_box input[type=checkbox]:checked + span {
+  background-image: url(http://template.weblivelink.com/uiproject/design_images/checkbox_check.png);
+}
+
+.formarea .checkbox_area ul li .redio_box input[type=radio]:not(old) + span {
+  background: url("http://template.weblivelink.com/uiproject/design_images/radio_button.png") no-repeat 0 0;
+  background-size: 24px;
+}
+
+.formarea .checkbox_area ul li .redio_box input[type=radio]:checked + span {
+  background-image: url(http://template.weblivelink.com/uiproject/design_images/radio_button_select.png);
+}
+
+@media (max-width: 991px) {
+  .formarea .checkbox_area ul {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formarea .checkbox_area {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .formarea .checkbox_area ul {
+    margin: 0px 0px 10px 0px;
+  }
+  .formarea .checkbox_area ul:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.info2, .success, .warning2, .failure, .validation2 {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  text-align: left;
+}
+
+.info2 {
+  color: #00529B;
+  background-color: #BDE5F8;
+  background-image: url(http://template.weblivelink.com/uiproject/design_images/info.png) !important;
+}
+
+.success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  background-image: url(http://template.weblivelink.com/uiproject/design_images/success.png) !important;
+}
+
+.warning2 {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  background-image: url(http://template.weblivelink.com/uiproject/design_images/exclamation.png) !important;
+}
+
+.failure {
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url(http://template.weblivelink.com/uiproject/design_images/error.png) !important;
+}
+
+/* ============= Form area End ========== */
+/*# sourceMappingURL=form.css.map */

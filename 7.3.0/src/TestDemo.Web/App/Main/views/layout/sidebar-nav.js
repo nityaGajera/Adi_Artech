@@ -12,6 +12,7 @@
                 createMenuItem(App.localize("Users"), "Pages.Users", "people", "users"),
                 createMenuItem(App.localize("Roles"), "Pages.Roles", "local_offer", "roles"),
                 createMenuItem(App.localize("About"), "", "info", "about"),
+                createMenuItem(App.localize("Website"), "", "info", "website"),
 
                 createMenuItem(App.localize("Product Catagory"), "", "menu", "", [
                     createMenuItem("Product", "Pages.Product", "info", "product"),

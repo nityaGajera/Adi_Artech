@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&display=swap");
+/* --- bg color start --- */
+/* --- bg color end --- */
+/* --- text color start --- */
+/* --- text color end --- */
+/*Social Icons*/
+/*common*/
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul, li {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+a, .btn {
+  text-decoration: none !important;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+  outline: none !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.img-fluid {
+  max-height: 100%;
+}
+
+.textCenter {
+  text-align: center;
+}
+/*# sourceMappingURL=globalvar.css.map */

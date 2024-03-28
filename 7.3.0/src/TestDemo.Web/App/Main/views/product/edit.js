@@ -2,13 +2,12 @@
     var myApp = angular.module('app');
     myApp.controller('app.views.product.edit', [
         '$scope', '$http', '$uibModalInstance', 'abp.services.app.product', 'id',
-        function ($scope, $http , $uibModalInstance, productService, id) {
+        function ($scope, $http , $uibModalInstance, productService, id,) {
             var vm = this;
             vm.loading = false;
             vm.saving = false;
             vm.product = {};
             function init() {
-                debugger;
                 if (id == undefined) {
 
                 } else {
@@ -21,7 +20,6 @@
                 productService.productExsistenceById({
                     id: id
                 }).then(function (result) {
-                    debugger;
                     vm.product = result.data;
                     console.log(vm.product);
                 });
@@ -64,24 +62,13 @@
                     vm.saving = false;
                     vm.saveAs();
                 })
-                $scope.imagePath = 'D:/SourcetreeProjs/Adi_Artech/7.3.0/src/TestDemo.Web/UserFiles/Products/painting 2.jpeg';
+                //$scope.imagePath = 'D:/SourcetreeProjs/Adi_Artech/7.3.0/src/TestDemo.Web/UserFiles/Products/painting 2.jpeg';
 
                 $scope.saveChanges = function () {
                     console.log("Image path saved:", $scope.imagePath);
-                    debugger;
                 };
 
             };
-            //$scope.getImage = function () {
-            //    ImageService.getImage(imageId)
-            //        .then(function (response) {
-            //            $scope.imageData = response.data; 
-            //        })
-            //        .catch(function (error) {
-            //            console.error('Error retrieving image:', error);
-            //        }); 
-            //};
-            //$scope.getImage();
          
 
             function init() {
@@ -89,7 +76,6 @@
                 productService.getProductbyid({
                     id: id
                 }).then(function (result) {
-                    debugger;
                     vm.product = result.data;
                     console.log(vm.product);
                 });
@@ -150,7 +136,6 @@
                 }
             }
             function init() {
-                debugger;
                 if (id == undefined) {
 
                 } else {
@@ -162,10 +147,10 @@
                 productService.getProductbyid({
                     id: id
                 }).then(function (result) {
-                    debugger;
                     vm.product = result.data;
                     console.log(vm.product);
-                    $scope.imagePath = 'https://lh5.googleusercontent.com/p/AF1QipNAuTbO-cI-osYN96jFyRQXB-6NN4mS1NNirW_k=w408-h271-k-no';
+                    $scope.imagePath = "";
+                    $scope.imagePath = '~/UserFiles/Products/jeans.jpeg';
                     console.log(imagePath);
                 });
             }

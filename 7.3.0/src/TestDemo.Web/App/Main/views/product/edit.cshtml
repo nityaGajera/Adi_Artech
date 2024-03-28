@@ -4,14 +4,14 @@
             <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="modal-title">
-            <span>@("Edit ProductName")</span>
+            <span>@("Edit Product Details")</span>
         </h4>
     </div>
     <div class="modal-body">
-        <span>product Module</span>
+        @*<span>product Module</span>
         <uib-tabset class="tab-container tabbable-line">
-            <uib-tab heading="product Details">
-                {{imagePath}}
+            <uib-tab heading="product Details">*@
+                @*{{imagePath}}*@
                 <div class="row clearfix" style="margin-top:10px;">
                     <div class="col-sm-12">
                         <div class="form-group form-float">
@@ -39,13 +39,13 @@
                                 <span class="input-group-btn">
                                     @*<a ng-if="vm.invoices.productUpload!=null" href={{vm.datafield.uploadDocUrl}} target="_blank" class="btn btn-primary btndownloadfile"><i class="fa fa-download" aria-hidden="true"></i></a>*@
                                 </span>
+                                @*<div ng-controller="imagecontroller">*@
                                 <img ng-src="{{imagePath}}" alt="Image" />
-                                <img src="{{imagePath}}" />
                             </div>
-                            <span>
-                                [only pdf,doc,txt,xls,jpg file allowed.]
-                            </span>
-                        </div>
+                                <span>
+                                    only pdf,doc,txt,xls,jpg file allowed.
+                                </span>
+                            </div>
                     </div>
                 </div>
 </div>

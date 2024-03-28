@@ -12,5 +12,6 @@
         public const string Pages_Product_Create = "Pages.Product.Create";
         public const string Pages_Product_Update = "Pages.Product.Update";
         public const string Pages_Product_Delete = "Pages.Product.Delete";
+        public const string Pages_Admin_HangfireDashboard = "Pages.Admin.HangfireDashboard";
     }
 }

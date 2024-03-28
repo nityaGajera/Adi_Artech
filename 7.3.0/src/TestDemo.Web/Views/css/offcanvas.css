@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&display=swap");
+/* --- bg color start --- */
+/* --- bg color end --- */
+/* --- text color start --- */
+/* --- text color end --- */
+/*Social Icons*/
+/*common*/
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul, li {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+a, .btn {
+  text-decoration: none !important;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+  outline: none !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.img-fluid {
+  max-height: 100%;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.row-offcanvas {
+  margin: 0;
+}
+
+.row-offcanvas .btn-primary {
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: bold;
+  outline: none !important;
+  background: #D51C19 !important;
+  border-radius: 0;
+  border: 0 !important;
+  width: 100%;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.row-offcanvas .icon-bar {
+  font-size: 28px;
+}
+
+.row-offcanvas.active .icon-bar::before {
+  content: '\f106';
+}
+
+.accordion li {
+  font-size: 16px;
+  padding: 5px 10px;
+  list-style: none;
+}
+
+.accordion li .fa-minus {
+  display: none;
+}
+
+.accordion li.active a {
+  color: #D51C19;
+  font-weight: bold;
+}
+
+.accordion li.active a .fa-plus {
+  display: none;
+}
+
+.accordion li.active a .fa-minus {
+  display: inline-block;
+}
+
+.accordion li a {
+  color: #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.accordion li a:hover {
+  color: #D51C19;
+}
+
+@media screen and (min-width: 992px) {
+  .row-offcanvasTitle {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .pageWrap {
+    border: 1px solid #ddd;
+    border-top: none;
+  }
+  .accordion li {
+    border-bottom: 1px solid #ddd;
+  }
+  .accordion li:last-child {
+    border: none;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .row-offcanvas .sidebar-offcanvas {
+    border: 1px solid #D51C19;
+    display: none;
+  }
+  .row-offcanvas.active .sidebar-offcanvas {
+    display: block;
+  }
+  .pageWrap {
+    max-height: 200px;
+    overflow-x: auto;
+  }
+  .accordion {
+    padding: 3px 0;
+  }
+  .accordion li {
+    padding: 3px 10px;
+  }
+}
+/*# sourceMappingURL=offcanvas.css.map */

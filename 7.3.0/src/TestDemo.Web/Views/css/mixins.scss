@@ -1,0 +1,82 @@
+@mixin dispflex($displayflex, $justifycontent, $alignitems) {
+    display: $displayflex; 
+    justify-content: $justifycontent; 
+    align-items: $alignitems;
+}
+@mixin navFlex($alignItems){
+    align-items: $alignItems;
+}
+@mixin transition($time) {
+    transition: all $time ease-in-out;
+}
+@mixin flex($percentage){
+    flex:0 0 $percentage;max-width: $percentage;
+}
+@mixin menuLink{
+    a{ 
+        position: relative; 
+        &::before{ content: ''; display: block; transition:all .3s ease-in-out;  position: absolute; bottom: -3px;left: 0;right: 0; width: 0; height: 3px; background: $primary-color;}
+        &:hover::before{ width: 100%;}
+    }
+    &.active a::before{ width: 100%;}
+}
+@mixin imgCenter{ position: relative; background: $white-color;
+    img{ position: absolute; left: 0;right: 0;top:0; bottom: 0;    max-height: 100%; margin: auto; width: auto !important;  }
+}
+
+
+@mixin big-desktop {
+    @media (min-width: 1400px) and  (max-width: 2500px){ @content; }
+}
+
+@mixin desktop1600 {
+    @media (max-width: 1600px) { @content; }
+}
+@mixin desktop1440 {
+    @media (max-width: 1440px) { @content; }
+}
+@mixin desktop1400 {
+    @media (max-width: 1400px) { @content; }
+}
+@mixin desktop1366 {
+    @media (max-width: 1366px) { @content; }
+}
+@mixin mini-desktop {
+    @media (max-width: 1199px) { @content; }
+}
+@mixin tab1024{
+    @media (max-width: 1024px) { @content; }
+}
+@mixin tab_min{
+    @media (min-width: 992px) { @content; }
+}
+@mixin tab{
+    @media (max-width: 991px) { @content; }
+}
+@mixin phone {
+    @media (max-width: 767px) { @content; }
+}
+@mixin phone-xs {
+    @media (max-width: 575px) { @content; }
+}
+@mixin phone480 {
+    @media (max-width: 480px) { @content; }
+}
+@mixin phone450 {
+    @media (max-width: 450px) { @content; }
+}
+@mixin phone420 {
+    @media (max-width: 420px) { @content; }
+}
+@mixin phone400 {
+    @media (max-width: 400px) { @content; }
+}
+@mixin phone380 {
+    @media (max-width: 380px) { @content; }
+}
+@mixin phone360 {
+    @media (max-width: 360px) { @content; }
+}
+@mixin phone330 {
+    @media (max-width: 330px) { @content; }
+}

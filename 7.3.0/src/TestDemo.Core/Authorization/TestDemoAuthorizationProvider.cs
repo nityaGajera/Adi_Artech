@@ -18,6 +18,9 @@ namespace TestDemo.Authorization
 
 
             context.CreatePermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
+
+            //Hangfire Dashboard Permission
+            context.CreatePermission(PermissionNames.Pages_Admin_HangfireDashboard, L("HangfireDashboard"));
         }
 
         private static ILocalizableString L(string name)

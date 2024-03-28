@@ -67,6 +67,11 @@
                     templateUrl: '/App/Main/views/product/index.cshtml',
                     menu: 'product' //Matches to name of 'product' menu in TestDemoNavigationProvider
                 })
+                .state('Website', {
+                    url: '/Website',
+                    templateUrl: 'D:/SourcetreeProjs/Master/src/TestDemo.Web/Views/index/index.cshtml',
+                    menu: 'website' //Matches to name of 'product' menu in TestDemoNavigationProvider
+                })
 
         //         .state('home', {
         //           url: '/',
